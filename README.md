@@ -1,149 +1,149 @@
 # 🛂 Passport Application Management System
 
-A full-stack web application designed to digitise and streamline the passport application process. The system replaces traditional manual workflows with a centralised digital platform, enabling users to apply online, track application status in real time, and allowing administrators to efficiently manage and verify records.
+A full-stack web application designed to digitize passport processing — enabling applicants to submit applications and track status online, while administrators manage and verify records in real time.
 
 ---
 
-## 📌 Project Overview
+## ✨ Features
 
-Passport services traditionally involve manual form submission, physical verification, and multiple approval stages, making the process time-consuming and difficult to track.  
+* 📝 **Online Application Submission**
+  Submit passport applications through a clean, validated form
 
-This project, developed as part of **BCSE302L: Database Systems (DBMS)**, provides a web-based solution that simplifies the workflow by digitising the entire system and ensuring efficient data management.
+* 📋 **View & Search Records**
+  Browse all applications in a searchable table with color-coded status badges
 
----
+* ✏️ **Update Verification Status**
+  Edit document submission and police verification details for any record
 
-## 🚀 Features
+* 🗑️ **Delete Applications**
+  Remove records safely with a confirmation dialog
 
-- Online passport application submission through a user-friendly interface  
-- Structured data storage using a **MySQL Relational DBMS**  
-- **Automatic application status generation** using SQL (VIEW + CASE logic)  
-- Admin panel for updating document submission and police verification status  
-- Searchable application records with edit and delete functionality  
-- Real-time application status tracking with visual progress indicators  
+* 📍 **Live Status Tracking**
+  Enter an Application ID to view a visual progress stepper in real time
 
----
-
-## 🏗️ Tech Stack
-
-**Frontend:** React.js, Axios  
-**Backend:** Node.js, Express.js  
-**Database (DBMS):** MySQL  
+* ⚙️ **Auto-derived Application Status**
+  Status is computed dynamically via a MySQL VIEW — never stored manually
 
 ---
 
-## 🧩 System Architecture
+## 🛠️ Tech Stack
 
-The application follows a **three-tier architecture**:
+### Frontend
+* React.js
+* React Router v6
+* Axios
 
-- **Presentation Layer:** React.js (Single Page Application)  
-- **Application Layer:** Node.js + Express.js  
-- **Data Layer:** MySQL relational database  
+### Backend
+* Node.js
+* Express.js
 
-### 🔄 Workflow
-
-- Frontend sends HTTP requests using Axios  
-- Backend processes requests and executes SQL queries  
-- Data is returned in JSON format  
-
----
-
-## 🗄️ Database Design (DBMS Concepts)
-
-- Normalized relational schema  
-- Primary and Foreign Keys  
-- SQL-based CRUD operations  
-- MySQL VIEW with CASE statement for dynamic status computation  
-- Reduced redundancy and improved data consistency  
+### Database
+* MySQL
 
 ---
 
-## ⚙️ Functionalities
+## 📁 Project Structure
 
-- Create (Insert): Apply for passport  
-- Read (Select): View applications  
-- Update: Modify verification status  
-- Delete: Remove applications  
-
----
-
-## 🔥 Key Highlights
-
-- Implemented a self-updating status engine using SQL logic  
-- Eliminated manual status updates to improve accuracy  
-- Designed a scalable and modular architecture  
-- Ensured efficient data handling using DBMS principles  
-
----
-
-## 🖥️ Installation & Setup
-
-### 1. Clone the Repository
-
-    git clone https://github.com/suhani-afk/passport-application-system.git
-    cd passport-application-system
-
----
-
-### 2. Install Dependencies
-
-Frontend:
-
-    cd client
-    npm install
-    npm start
-
-Backend:
-
-    cd server
-    npm install
-    node index.js
+```bash
+passport-management/
+│
+├── backend/
+│   ├── db.js                        # MySQL connection
+│   ├── routes/
+│   │   └── applicationRoutes.js     # API route definitions
+│   ├── controllers/
+│   │   └── applicationController.js # CRUD logic
+│   └── utils/
+│       └── statusLogic.js           # Server-side status helper
+│
+├── frontend/
+│   └── src/
+│       ├── App.js                   # Root component + routing
+│       ├── components/
+│       │   └── Navbar.js
+│       ├── pages/
+│       │   ├── Home.js
+│       │   ├── Apply.js
+│       │   ├── View.js
+│       │   ├── Update.js
+│       │   └── Status.js
+│       └── services/
+│           └── api.js               # Centralized Axios API helpers
+│
+└── README.md
+```
 
 ---
 
-### 3. Setup Database (MySQL Workbench)
+## ⚙️ Installation & Setup
 
-1. Open MySQL Workbench and connect to your server  
-2. Open a New Query Tab  
-3. Run:
+### 1️⃣ Clone the repository
 
-    CREATE DATABASE passport_db;
-    USE passport_db;
-
-4. Copy and paste your project SQL code (tables + view)  
-5. Click Execute (⚡)
+```bash
+git clone https://github.com/your-username/passport-management.git
+cd passport-management
+```
 
 ---
 
-## 📊 Key Outcomes
+### 2️⃣ Setup Database
 
-- Improved efficiency by digitising passport workflows  
-- Reduced manual errors through automated status computation  
-- Provided real-time tracking for better user experience  
+```bash
+mysql -u root -p
+```
 
----
-
-## 🎯 Future Enhancements
-
-- User authentication system  
-- Document upload feature  
-- Email/SMS notifications  
-- Role-based access control  
+```sql
+CREATE DATABASE passport_db;
+USE passport_db;
+SOURCE schema.sql;
+```
 
 ---
 
-## 👩‍💻 Author
+### 3️⃣ Setup Backend
 
-Suhani  
-CSE AIML Student, VIT Chennai  
+```bash
+cd backend
+npm install
+```
+
+Edit `db.js` with your MySQL credentials:
+
+```js
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'your_password',
+  database: 'passport_db'
+});
+```
+
+Run backend:
+
+```bash
+node index.js
+```
 
 ---
 
-## 🔗 Project Link
+### 4️⃣ Setup Frontend
 
-https://github.com/suhani-afk/passport-application-system  
+```bash
+cd frontend
+npm install
+npm start
+```
 
 ---
 
-## 📄 License
+## 🚀 Usage
 
-This project is developed for academic purposes as part of BCSE302L: Database Systems (DBMS).
+* Open: http://localhost:3000
+* Submit a new passport application via the **Apply** page
+* View and manage all records on the **View** page
+* Track your application progress on the **Status** page
+
+---
+
+
+Thanks to all contributors and open-source resources that supported the development of this project.
