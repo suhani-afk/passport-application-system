@@ -146,4 +146,3 @@ npm start
 ---
 
 
-Thanks to all contributors and open-source resources that supported the development of this project.
